@@ -1,13 +1,64 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.header{
+    width: 1400px;
+    background-color: cadetblue;
+    height: 90px;
+    text-align: center;
+    color: rgb(231, 247, 10);
+    padding-top: 30px; 
+    font-family: 'Libre Baskerville', serif;
+    font-size: 45px;
+    letter-spacing: 0.5px;
 }
+.WeatherBox{
+  height: 400px;
+    width: 350px;
+    background-color:#d8f18e ;
+    margin-left: 550px;
+    margin-top: 50px;
+    border-radius: 20px;
+    -webkit-box-shadow: 13px 6px 34px 14px rgba(0,0,0,0.57);
+    -moz-box-shadow: 13px 6px 34px 14px rgba(0,0,0,0.57);
+    box-shadow: 13px 6px 34px 14px rgba(0,0,0,0.57);
+}
+.input{
+  width: 344px;
+  height: 30px;
+  outline: none;
+  border-radius: 10px 10px 0px 0px  ;
+  font-size: medium;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+}
+.btn{
+  height: 37px;
+  width: 72px;
+  border-radius: 0px 10px 0px 0px ;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn:hover{
+  background-color: cadetblue; 
+}
+.noData{
+  text-align: center;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 25px;
+}
+.cityname{
+  font-size: 30px;
+  margin-top: 50px;
+  margin-left: 40px;
+  font-family: 'Kaisei Decol', serif;
+  color: rgb(36, 12, 12);
+}
+.temp{
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 50px;
+  margin-top: 40px;
+  color: cadetblue ;
+}
+.minimexi{
+  font-weight: bold;
+  margin-left: 50px;
 }

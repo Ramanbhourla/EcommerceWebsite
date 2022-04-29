@@ -1,53 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { BsFillGeoAltFill } from "react-icons/bs";
+import React, { useRef, useState } from "react";
+import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
+import { Route, Switch} from "react-router-dom";
+import Cart from "./Components/Cart";
+import Faq from "./Components/Faq";
+import {Products} from '../src/JsonData/Products';
+import Checkout from "./Components/Checkout";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import AllProducts from "./Components/AllProducts";
 
 function App() {
-  const [Search, setSearch] = useState("Ludhiana");
-  const [location, setLocation] = useState();
-
-  useEffect(() => {
-    const fetchapi = async () => {
-      const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q= ${Search}&units=metric&appid=d870a1b4eb6d489ee5afd463403c7e03`
-      );
-      const apidata = await response.json();
-      setLocation(apidata.main);
-    };
-    fetchapi();
-  }, [Search]);
-
-  // console.log(location)
-  return (
+  const [ProductData , setProductdata] =useState(Products);
+  const [cartItems, setcartItems]  = useState([]);
+  
+ return (
     <div>
-      <h1 className="header"> Weather App</h1>
-      <div className="WeatherBox">
-        <input
-          placeholder="Search here..."
-          className="input"
-          onChange={(e) => setSearch(e.target.value.toLocaleUpperCase())}
-        ></input>
+      <Navbar/>
+      <Switch>
+        <Route exact path={"/"} component={Home} />
+        <Route exact path={'/products'} render={()=> <AllProducts ProductData={ProductData} />} />
+        <Route exact path={'/cart'} render={()=> <Cart  cartItems={cartItems} />} /> 
+        <Route exact path={'/faq'} component={Faq} />
+        <Route exact path={'/checkout'} component={Checkout} />
+        <Route exact path={'/login'} component={Login} />
+        <Route exact path={'/register'} component={Register}/>
 
-        {!location ? (
-          <div className="noData">No Data Found</div>
-        ) : (
-          <div>
-            <div className="cityname">
-              <BsFillGeoAltFill color="cadetblue" size="26px" />
-              <span className="cityname">{Search}</span>
-            </div>
-
-            <div className="temp"> Temprature : {location.temp}Cel.</div>
-            <div className="minimexi">
-              {" "}
-              <p>Maxi Temp : {location.temp_max}</p>
-              <p>Mini Temp : {location.temp_min}</p>
-              <div> Humidity : {location.humidity}</div>
-            </div>
-          </div>
-        )}
-      </div>
+      </Switch>
     </div>
-  );
+  )
 }
 
 export default App;
